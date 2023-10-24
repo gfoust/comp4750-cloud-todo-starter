@@ -99,6 +99,7 @@ function helpCommand() {
   console.log("Commands:");
   console.log("  get user          - view all tasks");
   console.log("  get user task     - view specific task");
+  console.log("  remain user       - get all tasks that have not been completed")
   console.log("  add user task     - add new task");
   console.log("  check user task   - toggle complete status for task");
   console.log("  clear user        - clear all completed tasks");
@@ -109,38 +110,38 @@ function helpCommand() {
  */
 try {
   if (argv.length < 3) {
-    throw new Error(`Usage: node ${argv[1]} command params...\nUse 'help' command for more information`);
+    throw new Error(`Usage: node todo command params...\nUse 'help' command for more information`);
   }
 
   const command = argv[2];
 
   if (command == "get") {
     if (argv.length != 4 && argv.length != 5) {
-      throw new Error(`Usage: node ${argv[1]} get user [task]`);
+      throw new Error(`Usage: node todo get user [task]`);
     }
     await getCommand(argv[3], argv[4]);
   }
   else if (command == "remain") {
     if (argv.length != 4) {
-      throw new Error(`Usage: node ${argv[1]} remain user`);
+      throw new Error(`Usage: node todo remain user`);
     }
     await remainCommand(argv[3]);
   }
   else if (command == "add") {
     if (argv.length != 5) {
-      throw new Error(`Usage: node ${argv[1]} add user task`);
+      throw new Error(`Usage: node todo add user task`);
     }
     await addCommand(argv[3], argv[4]);
   }
   else if (command == "check") {
     if (argv.length != 5) {
-      throw new Error(`Usage: node ${argv[1]} check user task`);
+      throw new Error(`Usage: node todo check user task`);
     }
     await checkCommand(argv[3], argv[4]);
   }
   else if (command == "clear") {
     if (argv.length != 4) {
-      throw new Error(`Usage: node ${argv[1]} clear user`);
+      throw new Error(`Usage: node todo clear user`);
     }
     await clearCommand(argv[3]);
   }
